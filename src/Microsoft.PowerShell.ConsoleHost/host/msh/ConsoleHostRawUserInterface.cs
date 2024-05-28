@@ -1185,7 +1185,8 @@ namespace Microsoft.PowerShell
         public override
         int LengthInBufferCells(string s)
         {
-            return this.LengthInBufferCells(s, 0);
+            return new StringInfo(s).LengthInTextElements;
+            // return this.LengthInBufferCells(s, 0);
         }
 
         /// <summary>
@@ -1200,6 +1201,7 @@ namespace Microsoft.PowerShell
         public override
         int LengthInBufferCells(string s, int offset)
         {
+            // TODO: Fix this
             if (s == null)
             {
                 throw PSTraceSource.NewArgumentNullException("str");

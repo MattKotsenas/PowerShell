@@ -2773,11 +2773,12 @@ namespace Microsoft.PowerShell
                 }
             }
 
-            int length = 0;
-            foreach (char c in str)
-            {
-                length += LengthInBufferCells(c);
-            }
+            int length = new StringInfo(str).LengthInTextElements;
+            // int length = 0;
+            // foreach (char c in str)
+            // {
+            //     length += LengthInBufferCells(c);
+            // }
 
             return length - offset - escapeSequenceAdjustment;
         }

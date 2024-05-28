@@ -36,6 +36,7 @@ namespace System.Management.Automation.Internal
 
             while (true)
             {
+                // TODO: Fix here
                 result = toTruncate.Substring(0, i);
                 int cellCount = rawUI.LengthInBufferCells(result);
                 if (cellCount <= maxWidthInBufferCells)

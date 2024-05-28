@@ -1040,7 +1040,8 @@ Describe "Console host api tests" -Tag CI {
             @{InputObject = "abc"; Length = 3; Name = "No escapes"},
             @{InputObject = "${esc} [31mabc"; Length = 9; Name = "Malformed escape - extra space"},
             @{InputObject = "${esc}abc"; Length = 4; Name = "Malformed escape - no csi"},
-            @{InputObject = "[31mabc"; Length = 7; Name = "Malformed escape - no escape"}
+            @{InputObject = "[31mabc"; Length = 7; Name = "Malformed escape - no escape"},
+            @{InputObject = "`u{10437}"; Length = 1; Name = "Surrogate pairs"}
 
         $testCases += if ($Host.UI.SupportsVirtualTerminal)
         {

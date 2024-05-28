@@ -50,11 +50,12 @@ namespace Microsoft.PowerShell.Commands.Internal.Format
                 str = valueStrDec.ToString(OutputRendering.PlainText);
             }
 
-            int length = 0;
-            for (; offset < str.Length; offset++)
-            {
-                length += CharLengthInBufferCells(str[offset]);
-            }
+            int length = new StringInfo(str).LengthInTextElements;
+            // int length = 0;
+            // for (; offset < str.Length; offset++)
+            // {
+            //     length += CharLengthInBufferCells(str[offset]);
+            // }
 
             return length;
         }

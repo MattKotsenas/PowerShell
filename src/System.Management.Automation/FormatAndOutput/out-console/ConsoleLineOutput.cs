@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Management.Automation;
 using System.Management.Automation.Internal;
 using System.Management.Automation.Host;
@@ -44,11 +45,12 @@ namespace Microsoft.PowerShell.Commands.Internal.Format
                     str = valueStrDec.ToString(OutputRendering.PlainText);
                 }
 
-                int length = 0;
-                for (; offset < str.Length; offset++)
-                {
-                    length += _rawUserInterface.LengthInBufferCells(str[offset]);
-                }
+                int length = new StringInfo(str).LengthInTextElements;
+                // int length = 0;
+                // for (; offset < str.Length; offset++)
+                // {
+                //     length += _rawUserInterface.LengthInBufferCells(str[offset]);
+                // }
 
                 return length;
             }
